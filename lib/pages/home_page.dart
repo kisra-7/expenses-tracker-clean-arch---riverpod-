@@ -133,9 +133,8 @@ class HomePage extends ConsumerWidget {
                 ),
               ),
               SizedBox(height: 20),
-              ElevatedButton(
-                style: ButtonStyle(),
-                onPressed: () {
+              InkWell(
+                onTap: () {
                   ref
                       .watch(dbProvider.notifier)
                       .upLoadExpenseToDb(
@@ -149,11 +148,27 @@ class HomePage extends ConsumerWidget {
                         ),
                       );
                 },
-                child: Text('submit'),
+                child: Container(
+                  margin: EdgeInsets.all(5),
+                  padding: EdgeInsets.all(20),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    color: Colors.teal[300],
+                  ),
+                  child: Center(
+                    child: Text(
+                      'Submit',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                        fontSize: 15,
+                      ),
+                    ),
+                  ),
+                ),
               ),
-              ElevatedButton(
-                style: ButtonStyle(),
-                onPressed: () {
+              InkWell(
+                onTap: () {
                   ref.watch(dbProvider.notifier).getDataFromDb();
                   ref.watch(dbProvider.notifier).sumCosts();
                   Navigator.push(
@@ -165,7 +180,28 @@ class HomePage extends ConsumerWidget {
                     ),
                   );
                 },
-                child: Text('get'),
+                child: Hero(
+                  tag: 'hey',
+                  child: Container(
+                    width: double.infinity,
+                    margin: EdgeInsets.all(5),
+                    padding: EdgeInsets.all(20),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: Colors.teal[300],
+                    ),
+                    child: Center(
+                      child: Text(
+                        'Get',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                          fontSize: 15,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
               ),
             ],
           ),
@@ -174,3 +210,19 @@ class HomePage extends ConsumerWidget {
     );
   }
 }
+
+/**
+ * 
+ * ref
+                      .watch(dbProvider.notifier)
+                      .upLoadExpenseToDb(
+                        Expense(
+                          id: id,
+                          title: titleController.text.trim(),
+                          description: discriptionController.text.trim(),
+                          cost: double.parse(costController.text.trim()),
+                          color: colorController.text.trim(),
+                          date: DateTime.now(),
+                        ),
+                      );
+ */

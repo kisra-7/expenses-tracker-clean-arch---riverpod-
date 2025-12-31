@@ -13,17 +13,16 @@ class ThemeProvider extends ChangeNotifier {
     loadThemeData();
   }
 
-  Future loadThemeData() async {
-    final SharedPreferences prefs = await SharedPreferences.getInstance();
-
+  void loadThemeData() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
     isDark = prefs.getBool(Consts.themeKey) ?? true;
-    notifyListeners();
   }
 
-  void changeTheme(bool val) async {
-    final SharedPreferences prefs = await SharedPreferences.getInstance();
+  void toggleTheme(bool val) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
     isDark = val;
-    prefs.setBool(Consts.themeKey, val);
     notifyListeners();
+    print(isDark.toString());
+    prefs.setBool(Consts.themeKey, isDark);
   }
 }

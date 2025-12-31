@@ -11,12 +11,30 @@ class MyDrawer extends ConsumerWidget {
     return Drawer(
       child: SafeArea(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            CupertinoSwitch(
-              value: ref.watch(themeProvider).isDark,
-              onChanged: (val) {
-                ref.watch(themeProvider.notifier).changeTheme(val);
-              },
+            Container(
+              padding: EdgeInsets.all(10),
+              margin: EdgeInsets.symmetric(vertical: 20, horizontal: 50),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20),
+                color: Colors.teal[300],
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(Icons.wb_sunny_outlined),
+                  SizedBox(width: MediaQuery.of(context).size.width * 0.05),
+                  CupertinoSwitch(
+                    value: ref.watch(themeProvider).isDark,
+                    onChanged: (value) {
+                      ref.watch(themeProvider.notifier).toggleTheme(value);
+                    },
+                  ),
+                  SizedBox(width: MediaQuery.of(context).size.width * 0.05),
+                  Icon(Icons.dark_mode_outlined),
+                ],
+              ),
             ),
           ],
         ),
