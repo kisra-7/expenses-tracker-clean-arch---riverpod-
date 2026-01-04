@@ -19,7 +19,7 @@ class ExpenseCard extends ConsumerWidget {
         padding: EdgeInsets.all(20),
         margin: EdgeInsets.all(1.5),
         decoration: BoxDecoration(
-          color: Colors.teal[300],
+          color: Color(expense.color),
           borderRadius: BorderRadius.circular(20),
         ),
         child: Column(

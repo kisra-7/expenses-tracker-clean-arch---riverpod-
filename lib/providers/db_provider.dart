@@ -10,6 +10,7 @@ final dbProvider = ChangeNotifierProvider<DbProvider>((ref) {
 
 class DbProvider extends ChangeNotifier {
   List<Expense> expensesList = [];
+  Color color = Colors.teal;
 
   Future upLoadExpenseToDb(Expense expense) async {
     FirebaseFirestore.instance.collection('expensses').add({
@@ -61,5 +62,10 @@ class DbProvider extends ChangeNotifier {
         .doc(snapShot.docs[index].id)
         .delete();
     getDataFromDb();
+  }
+
+  void changeColor(Color selectedColor) {
+    color = selectedColor;
+    notifyListeners();
   }
 }

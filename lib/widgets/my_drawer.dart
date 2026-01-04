@@ -1,4 +1,5 @@
 import 'package:expenses_tracker/providers/theme_provider.dart';
+import 'package:expenses_tracker/widgets/theme_card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -22,20 +23,10 @@ class MyDrawer extends ConsumerWidget {
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(Icons.wb_sunny_outlined),
-                  SizedBox(width: MediaQuery.of(context).size.width * 0.05),
-                  CupertinoSwitch(
-                    value: ref.watch(themeProvider).isDark,
-                    onChanged: (value) {
-                      ref.watch(themeProvider.notifier).toggleTheme(value);
-                    },
-                  ),
-                  SizedBox(width: MediaQuery.of(context).size.width * 0.05),
-                  Icon(Icons.dark_mode_outlined),
-                ],
+                children: [],
               ),
             ),
+            ThemeCard(),
           ],
         ),
       ),

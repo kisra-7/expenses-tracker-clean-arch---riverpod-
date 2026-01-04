@@ -1,10 +1,10 @@
 import 'package:expenses_tracker/models/expense.dart';
 import 'package:expenses_tracker/pages/expensses_page.dart';
-import 'package:expenses_tracker/pages/sign_in_page.dart';
 import 'package:expenses_tracker/providers/db_provider.dart';
 import 'package:expenses_tracker/providers/image_provider.dart';
 import 'package:expenses_tracker/widgets/my_drawer.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flex_color_picker/flex_color_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:uuid/uuid.dart';
@@ -17,7 +17,6 @@ class HomePage extends ConsumerWidget {
   TextEditingController titleController = TextEditingController();
   TextEditingController discriptionController = TextEditingController();
   TextEditingController costController = TextEditingController();
-  TextEditingController colorController = TextEditingController();
   TextEditingController dateController = TextEditingController();
 
   @override
@@ -28,23 +27,13 @@ class HomePage extends ConsumerWidget {
       appBar: AppBar(
         title: Text('Add expenses'),
         actions: [
-          IconButton(
-            onPressed: () async {
-              await FirebaseAuth.instance.signOut();
-              if (FirebaseAuth.instance.currentUser == null) {
-                // ignore: use_build_context_synchronously
-                Navigator.pushReplacement(
-                  // ignore: use_build_context_synchronously
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) {
-                      return SignInPage();
-                    },
-                  ),
-                );
-              }
-            },
-            icon: Icon(Icons.logout),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: CircleAvatar(
+              backgroundImage: NetworkImage(
+                FirebaseAuth.instance.currentUser!.photoURL!,
+              ),
+            ),
           ),
         ],
       ),
@@ -112,24 +101,14 @@ class HomePage extends ConsumerWidget {
                   ),
                 ),
               ),
-              SizedBox(height: 12),
-              TextField(
-                controller: colorController,
-                decoration: InputDecoration(
-                  hint: Text('color'),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                ),
-              ),
-              SizedBox(height: 12),
-              TextField(
-                controller: dateController,
-                decoration: InputDecoration(
-                  hint: Text('time'),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(15),
-                  ),
+              SizedBox(height: 20),
+
+              Card(
+                elevation: 20,
+                child: ColorPicker(
+                  onColorChanged: (color) {
+                    ref.watch(dbProvider.notifier).changeColor(color);
+                  },
                 ),
               ),
               SizedBox(height: 20),
@@ -143,7 +122,7 @@ class HomePage extends ConsumerWidget {
                           title: titleController.text.trim(),
                           description: discriptionController.text.trim(),
                           cost: double.parse(costController.text.trim()),
-                          color: colorController.text.trim(),
+                          color: ref.watch(dbProvider).color.value32bit,
                           date: DateTime.now(),
                         ),
                       );
@@ -210,19 +189,3 @@ class HomePage extends ConsumerWidget {
     );
   }
 }
-
-/**
- * 
- * ref
-                      .watch(dbProvider.notifier)
-                      .upLoadExpenseToDb(
-                        Expense(
-                          id: id,
-                          title: titleController.text.trim(),
-                          description: discriptionController.text.trim(),
-                          cost: double.parse(costController.text.trim()),
-                          color: colorController.text.trim(),
-                          date: DateTime.now(),
-                        ),
-                      );
- */

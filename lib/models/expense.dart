@@ -7,7 +7,7 @@ class Expense {
   String title;
   String description;
   double cost;
-  String color;
+  int color;
   DateTime date;
 
   Expense({
@@ -24,7 +24,7 @@ class Expense {
     String? title,
     String? description,
     double? cost,
-    String? color,
+    int? color,
     DateTime? date,
   }) {
     return Expense(
@@ -65,7 +65,7 @@ class Expense {
       title: data['title'] ?? '',
       description: data['description'] ?? '',
       cost: (data['cost'] as num).toDouble(),
-      color: data['color'] ?? '',
+      color: data['color'],
       date: parsedDate,
     );
   }
