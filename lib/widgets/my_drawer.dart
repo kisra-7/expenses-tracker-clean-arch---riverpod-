@@ -16,6 +16,20 @@ class MyDrawer extends ConsumerWidget {
           children: [
             InkWell(
               onTap: () {
+                Navigator.pop(context);
+              },
+              child: Container(
+                padding: EdgeInsets.all(15),
+                margin: EdgeInsets.all(20),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: const Color.fromARGB(255, 176, 83, 114),
+                ),
+                child: Text('S E T T I N G S'),
+              ),
+            ),
+            InkWell(
+              onTap: () {
                 showDialog(
                   context: context,
                   builder: (context) {

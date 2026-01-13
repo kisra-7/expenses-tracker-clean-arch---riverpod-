@@ -1,4 +1,5 @@
 import 'package:expenses_tracker/firebase_options.dart';
+import 'package:expenses_tracker/pages/add_expense_page.dart';
 import 'package:expenses_tracker/pages/home_page.dart';
 import 'package:expenses_tracker/pages/sign_in_page.dart';
 import 'package:expenses_tracker/providers/theme_provider.dart';
@@ -26,7 +27,7 @@ class App extends ConsumerWidget {
           : ThemeMode.light,
       home: FirebaseAuth.instance.currentUser == null
           ? SignInPage()
-          : HomePage(),
+          : AddExpensePage(),
       debugShowCheckedModeBanner: false,
     );
   }
