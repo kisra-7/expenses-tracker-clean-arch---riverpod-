@@ -18,7 +18,7 @@ class ExpenseCard extends ConsumerWidget {
         margin: EdgeInsets.all(3),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(17),
-          color: Colors.teal,
+          color: Color(expense.color),
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

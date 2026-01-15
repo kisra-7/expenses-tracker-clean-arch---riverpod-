@@ -1,12 +1,14 @@
 import 'package:expenses_tracker/pages/settings_page.dart';
 import 'package:expenses_tracker/pages/sign_in_page.dart';
+import 'package:expenses_tracker/providers/income_provider.dart';
 import 'package:expenses_tracker/widgets/theme_card.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class MyDrawer extends ConsumerWidget {
-  const MyDrawer({super.key});
+  MyDrawer({super.key});
+  final TextEditingController incomeController = TextEditingController();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -16,6 +18,38 @@ class MyDrawer extends ConsumerWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
+            Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: TextField(
+                controller: incomeController,
+                decoration: InputDecoration(
+                  hintText: 'Please enter your income',
+                  border: OutlineInputBorder(),
+                ),
+              ),
+            ),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.001),
+            InkWell(
+              onTap: () {
+                ref
+                    .watch(incomePorvider.notifier)
+                    .updateIncome(double.parse(incomeController.text.trim()));
+                // ignore: avoid_print
+                print(ref.watch(incomePorvider).income);
+              },
+              child: Container(
+                padding: EdgeInsets.all(10),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(12),
+                  color: Colors.teal[300],
+                ),
+                child: Text(
+                  'Submit',
+                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                ),
+              ),
+            ),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.3),
             InkWell(
               onTap: () {
                 Navigator.pop(context);

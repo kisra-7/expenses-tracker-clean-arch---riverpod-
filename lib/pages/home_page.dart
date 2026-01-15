@@ -1,6 +1,6 @@
-import 'package:expenses_tracker/models/expense.dart';
 import 'package:expenses_tracker/pages/add_expense_page.dart';
 import 'package:expenses_tracker/providers/db_provider.dart';
+import 'package:expenses_tracker/providers/income_provider.dart';
 import 'package:expenses_tracker/widgets/expense_card.dart';
 import 'package:expenses_tracker/widgets/my_drawer.dart';
 import 'package:flutter/material.dart';
@@ -48,7 +48,37 @@ class _HomePageState extends ConsumerState<HomePage> {
         ),
       ),
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          Container(
+            margin: EdgeInsets.all(MediaQuery.of(context).size.width * 0.01),
+            padding: EdgeInsets.all(15),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(12),
+              color: Colors.teal[700],
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Text(
+                  'expensses:${ref.watch(dbProvider.notifier).sumCosts()}',
+                  style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                ),
+                Container(
+                  width: 1,
+                  height: 30,
+                  color: Colors.grey[50],
+                  margin: const EdgeInsets.symmetric(horizontal: 10),
+                ),
+                Text(
+                  ref.watch(incomePorvider).income != null
+                      ? 'Money Left:${ref.watch(incomePorvider.notifier).getMoneyLeft(ref.watch(dbProvider).sumCosts())}'
+                      : 'No Income Info',
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
+                ),
+              ],
+            ),
+          ),
           Expanded(
             child: GridView.builder(
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
