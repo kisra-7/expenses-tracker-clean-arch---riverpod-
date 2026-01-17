@@ -129,6 +129,7 @@ class AddExpensePage extends ConsumerWidget {
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(content: Center(child: Text('Expense added'))),
                   );
+                  Navigator.pop(context);
                 },
                 child: Container(
                   margin: EdgeInsets.all(5),
@@ -144,42 +145,6 @@ class AddExpensePage extends ConsumerWidget {
                         fontWeight: FontWeight.bold,
                         color: Colors.white,
                         fontSize: 15,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-              InkWell(
-                onTap: () {
-                  ref.watch(dbProvider.notifier).getDataFromDb();
-                  ref.watch(dbProvider.notifier).sumCosts();
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) {
-                        return ExpenssesPage();
-                      },
-                    ),
-                  );
-                },
-                child: Hero(
-                  tag: 'hey',
-                  child: Container(
-                    width: double.infinity,
-                    margin: EdgeInsets.all(5),
-                    padding: EdgeInsets.all(20),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      color: Colors.teal[300],
-                    ),
-                    child: Center(
-                      child: Text(
-                        'Get',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                          fontSize: 15,
-                        ),
                       ),
                     ),
                   ),
