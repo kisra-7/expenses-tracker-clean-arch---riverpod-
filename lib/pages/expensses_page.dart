@@ -12,7 +12,7 @@ class ExpenssesPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     List<Expense> expenseList = ref.watch(dbProvider).expensesList;
     return Scaffold(
-      appBar: AppBar(title: Text('EXPENSSES', style: TextStyle())),
+      appBar: AppBar(title: Text('EXPENSE', style: TextStyle())),
       body: Center(
         child: expenseList.isEmpty
             ? CircularProgressIndicator.adaptive()
