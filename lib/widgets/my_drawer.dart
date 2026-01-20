@@ -1,4 +1,3 @@
-import 'package:expenses_tracker/pages/settings_page.dart';
 import 'package:expenses_tracker/pages/sign_in_page.dart';
 import 'package:expenses_tracker/providers/income_provider.dart';
 import 'package:expenses_tracker/widgets/theme_card.dart';
@@ -53,14 +52,6 @@ class MyDrawer extends ConsumerWidget {
             InkWell(
               onTap: () {
                 Navigator.pop(context);
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) {
-                      return SettingsPage();
-                    },
-                  ),
-                );
               },
               child: Container(
                 width: MediaQuery.of(context).size.width * 0.45,
