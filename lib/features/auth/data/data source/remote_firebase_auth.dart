@@ -46,4 +46,13 @@ class RemoteFirebaseAuth {
       print(e.toString());
     }
   }
+
+  Future<void> signOut() async {
+    try {
+      await _auth.signOut();
+    } catch (e) {
+      // ignore: avoid_print
+      print(e.toString());
+    }
+  }
 }

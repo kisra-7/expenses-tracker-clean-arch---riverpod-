@@ -1,4 +1,4 @@
-abstract class AtuhRepositrory {
+abstract class AuthRepositrory {
   Future<void> signInWithEmailAndPassword(
     String email,
     String password,
@@ -10,4 +10,6 @@ abstract class AtuhRepositrory {
   ) async {}
 
   Future<void> signInWithGoogle() async {}
+
+  Future<void> signOut() async {}
 }
