@@ -25,6 +25,7 @@ class AddExpensePage extends ConsumerWidget {
         padding: const EdgeInsets.only(left: 15, right: 15, bottom: 25),
         child: SingleChildScrollView(
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               TextField(
                 controller: titleController,

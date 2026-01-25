@@ -17,7 +17,7 @@ class HomePage extends ConsumerWidget {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.teal[300],
-        child: const Icon(Icons.add, size: 30),
+        child: const Icon(Icons.add, size: 25),
         onPressed: () {
           Navigator.push(
             context,
