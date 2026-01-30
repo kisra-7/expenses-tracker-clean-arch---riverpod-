@@ -5,7 +5,7 @@ This project focuses on writing **clean, readable, and maintainable Flutter code
 
 ---
 
-## ✨ What the app does
+##  What the app does
 
 - Add and delete expenses
 - View total expenses
@@ -15,7 +15,7 @@ This project focuses on writing **clean, readable, and maintainable Flutter code
 
 ---
 
-## 🗂 Project Structure
+##  Project Structure
 
 The project follows a **feature-based structure**.
 
@@ -28,7 +28,7 @@ This makes the codebase easier to understand and scale.
 
 ---
 
-## 🧱 Architecture
+##  Architecture
 
 The app uses **Clean Architecture** to keep responsibilities separated and the code easy to maintain.
 
@@ -36,7 +36,7 @@ Business logic is separated from UI, and data sources are isolated behind reposi
 
 ---
 
-## 🔄 State Management
+##  State Management
 
 State management is handled using **Riverpod**.
 
@@ -46,7 +46,7 @@ State management is handled using **Riverpod**.
 
 ---
 
-## 🧪 Testing
+##  Testing
 
 Basic testing is included to ensure the core functionality works as expected:
 
@@ -58,7 +58,7 @@ The focus is on testing **logic and behavior**, not framework internals.
 
 ---
 
-## 📸 Screenshots
+## Screenshots
 
 <table>
   <tr>
