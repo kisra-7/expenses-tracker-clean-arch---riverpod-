@@ -69,7 +69,11 @@ The focus is on testing **logic and behavior**, not framework internals.
   </tr>
 </table>
 
-> Replace the image names above with your actual screenshot file names if needed.
+Ahmed  
+Flutter Developer
+
+Flutter developer with a strong focus on clean code and scalable app architecture.  
+I enjoy building real-world applications, solving problems, and improving code quality through good structure and testing.
 
 ---
 
@@ -82,9 +86,5 @@ flutter run
 
 ## 👤 About Me
 
-Ahmed  
-Flutter Developer
 
-Flutter developer with a strong focus on clean code and scalable app architecture.  
-I enjoy building real-world applications, solving problems, and improving code quality through good structure and testing.
 
