@@ -62,7 +62,7 @@ The focus is on testing **logic and behavior**, not framework internals.
 
 <table>
   <tr>
-    <td><img src="screenshots/home.png" width="200"/></td>
+    <td><img src="screenshots/home_page.png" width="200"/></td>
     <td><img src="screenshots/add_expense_dark_page.png" width="200"/></td>
     <td><img src="screenshots/drawer.png" width="200"/></td>
     <td><img src="screenshots/add_expense_page.png" width="200"/></td>
