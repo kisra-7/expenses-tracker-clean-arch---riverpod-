@@ -69,7 +69,7 @@ The focus is on testing **logic and behavior**, not framework internals.
   </tr>
 </table>
 
-## 👤 About Me
+##  About Me
 
 Ahmed  
 Flutter Developer
